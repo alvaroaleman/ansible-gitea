@@ -29,3 +29,7 @@ Gemfile.lock
 envvars-vagrant
 \.*\.swp
 \.environ
+
+tests/roles/*
+
+!.gitkeep

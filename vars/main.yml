@@ -1,3 +1,11 @@
 ---
 # lookup role version
 gogs_role_version: "{{ lookup('file', role_path + '/VERSION') }}"
+gogs_filename: "gogs_{{ gogs_version }}.tar.gz"
+gogs_supported_distributions:
+  - CentOS-7
+
+gogs_sha256sum:
+  '0.9.13': 5c9adfe3e170cd0abfd687fc4730a214cecf3c778400c231fcbaaf7efab095dc
+
+gogs_checksum: "{{ gogs_sha256sum[gogs_version] }}"

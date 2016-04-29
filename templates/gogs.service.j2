@@ -1,0 +1,14 @@
+[Unit]
+Description=Gogs (Go Git Service)
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User={{ gogs_username }}
+Group={{ gogs_username }}
+ExecStart={{ gogs_install_dir ~ '/' ~ gogs_version ~ '/gogs web' }}
+Environment=USER={{ gogs_username }} HOME={{ gogs_home }} GOGS_CUSTOM={{ gogs_home }}/custom
+
+[Install]
+WantedBy=multi-user.target

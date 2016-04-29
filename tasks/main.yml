@@ -1,2 +1,105 @@
 ---
 # tasks file for ansible-gogs
+- name: Assert supported distribution
+  tags: gogs
+  assert:
+    that: ansible_distribution + '-' + ansible_distribution_major_version in gogs_supported_distributions
+
+- name: Ensure sha256sum is available
+  tags: gogs
+  assert:
+    that: gogs_sha256sum[gogs_version] is defined
+
+- name: Create gogs user
+  tags: gogs
+  become: true
+  user:
+    name: "{{ gogs_username }}"
+    home: "{{ gogs_home }}"
+    system: true
+
+- name: Install prerequisites
+  tags: gogs
+  become: true
+  package:
+    name: git
+    state: present
+
+- name: Include datapersitency tasks
+  tags: gogs
+  include: "{{ role_path }}/../silpion.lib/tasks/datapersistency.yml"
+
+- name: Download gogs
+  tags: gogs
+  include: "{{ role_path }}/../silpion.lib/tasks/get_url.yml"
+  vars:
+    url: "https://cdn.gogs.io/gogs_v{{ gogs_version }}_linux_amd64.tar.gz"
+    filename: "{{ gogs_filename }}"
+    sha256sum: "{{ gogs_checksum }}"
+
+- name: Copy gogs
+  tags: gogs
+  include: "{{ role_path }}/../silpion.lib/tasks/copy.yml"
+  vars:
+    filename: "{{ gogs_filename }}"
+
+- name: Create directorys
+  tags: gogs
+  become: true
+  with_items:
+    - "{{ gogs_install_dir }}"
+    - "{{ gogs_install_dir ~ '/' ~ gogs_version }}"
+    - "{{ gogs_home ~ '/custom' }}"
+  file:
+    state: directory
+    path: "{{ item }}"
+    owner: "{{ gogs_username }}"
+    group: "{{ gogs_username }}"
+    mode: 0755
+
+- name: Install gogs
+  tags: gogs
+  become: true
+  command: >
+    tar -xzf {{ lib_persistent_data_path_remote }}/{{ gogs_filename }}
+      --strip-components 1
+      --directory {{ gogs_install_dir ~ '/' ~ gogs_version }}
+      --no-same-owner
+  args:
+    creates: "{{ gogs_install_dir ~ '/' ~ gogs_version ~ '/gogs' }}"
+
+- name: Deploy unitfiles
+  tags: gogs
+  become: true
+  register: registered_unitfiledeployment
+  template:
+    src: gogs.service.j2
+    dest: /etc/systemd/system/gogs.service
+
+- name: Reload unitfiles
+  tags: gogs
+  become: true
+  when: registered_unitfiledeployment|changed
+  command: systemctl daemon-reload
+
+
+- name: Deploy facts
+  tags: gogs
+  include: "{{ role_path }}/../silpion.lib/tasks/localfacts.yml"
+  vars:
+    template: facts.j2
+    namespace: gogs
+
+- name: Enssure gogs service is enabled and started
+  tags: gogs
+  become: true
+  service:
+    state: started
+    enabled: true
+    name: gogs
+
+- name: Test if gogs is running
+  tags: gogs
+  changed_when: false
+  become: true
+  shell: ps axu|grep -v grep|grep -q gogs
