@@ -31,5 +31,6 @@ envvars-vagrant
 \.environ
 
 tests/roles/*
+tests/pw*
 
 !.gitkeep
