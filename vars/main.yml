@@ -1,0 +1,3 @@
+---
+# lookup role version
+gogs_role_version: "{{ lookup('file', role_path + '/VERSION') }}"
