@@ -111,7 +111,7 @@
     template: facts.j2
     namespace: gogs
 
-- name: Enssure gogs service is enabled and started
+- name: Ensure gogs service is enabled and started
   tags: gogs
   become: true
   notify: Ensure gogs is running

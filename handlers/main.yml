@@ -12,4 +12,4 @@
   tags: gogs
   changed_when: false
   become: true
-  shell: ps axu|grep -v grep|grep -q gogs
+  command: systemctl status gogs
