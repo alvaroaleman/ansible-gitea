@@ -14,6 +14,6 @@ gogs_domain: "{{ ansible_fqdn }}"
 gogs_http_port: '3000'
 gogs_ssh_port: '2222'
 gogs_database_type: 'mysql'
-gogs_database_uri: '127.0.0.1:3306'
+gogs_database_uri: 'localhost:3306'
 gogs_database_name: gogs
 gogs_database_user: gogs
