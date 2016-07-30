@@ -1,2 +1,19 @@
 ---
 # defaults file for ansible-gogs
+gogs_username: gogs
+gogs_home: '/srv/gogs'
+gogs_install_dir: '/opt/gogs'
+gogs_config_dir: '/etc/gogs'
+gogs_version: '0.9.48'
+gogs_template_use_cow: "{{ util_template_use_cow|default(true) }}"
+gogs_appini_template: builtin_app.ini.j2
+gogs_logdir: /var/log/gogs
+gogs_runmode: prod
+gogs_http_proto: 'http'
+gogs_domain: "{{ ansible_fqdn }}"
+gogs_http_port: '3000'
+gogs_ssh_port: '2222'
+gogs_database_type: 'mysql'
+gogs_database_uri: 'localhost:3306'
+gogs_database_name: gogs
+gogs_database_user: gogs

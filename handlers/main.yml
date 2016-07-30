@@ -1,2 +1,15 @@
 ---
 # handlers file for ansible-gogs
+- name: service gogs restart
+  tags: gogs
+  become: true
+  notify: Ensure gogs is running
+  service:
+    name: gogs
+    state: restarted
+
+- name: Ensure gogs is running
+  tags: gogs
+  changed_when: false
+  become: true
+  command: systemctl status gogs

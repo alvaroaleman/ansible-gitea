@@ -2,43 +2,47 @@
 
 ## Synopsis
 
-Synopsis...
+```yml
+- hosts: all
+  vars:
+    gogs_database_name: gogs
+    gogs_database_user: gogs
+    gogs_database_password: "{{ vault_crypted_gogs_database_pass }}"
+    gogs_salt: "{{ vault_crypted_gogs_salt }}"
+    gogs_domain: git.example.com
+    gogs_database_uri: mysql.example.com:3306
+  roles:
+    - alvaroaleman.gogs
+```
 
 ## Description
 
-Description...
+Simple role to install the Gogs git server.
 
 ## Requirements
 
-Requirements...
+* [silpion.lib](https://github.com/silpion/ansible-lib.git)
 
 ## Role Variables
 
-* ``variable_name``: Variable description (<!variable type>, default: ``variable default value``)
+* ``gogs_domain``: The baseurl for linkgeneration  ``mandatory``
+* ``gogs_database_bassword``: Database password for gogs ``mandatory``
+* ``gogs_salt``: The salt to use for password storage ``mandatory``
+* ``gogs_database_uri``: Uri to use for database connection (default: ``localhost:3306``)
+* ``gogs_database_name``: Name of the database gogs shall use (default: ``gogs``)
+* ``gogs_database_user``: Name of the database usre gogs shall use (default: ``gogs``)
+* ``gogs_database_type``: Type of gogs database (default: ``mysql``)
+* ``gogs_http_port``: Http port gogs shall bind to (default: ``3000``)
+* ``gogs_ssh_port``: SSH port gogs shall bind to (default: ``2222``)
+* ``gogs_http_proto``: Whether to prepend ``http`` or ``https`` to generated links (default: ``http``)
+* ``gogs_logdir``: The directory to write logs into (default: ``/var/run/gogs``)
+* ``gogs_appini_template``: Template to use fot gogs ``app.ini`` config file (default: ``builtin_app.ini.j2``)
+* ``gogs_home``: Folder in which to put gogs data (default: ``/srv/gogs``)
+* ``gogs_username``: Username under which to run gogs. Must be root if you want gogs to bind to ports < 1024 (default: ``gogs``)
+* ``gogs_install_dir``: Folder to install gogs into (default: ``/opts/gogs``)
+* ``gogs_config_dir``: Folder in which to put gogs config (default: ``/etc/gogs``)
+* ``gogs_version``: The version of gogs to install (default: ``0.9.48``)
 
-### complex_variable_name
-
-Complex variable documentation...
-
-### another_complex_variable_name
-
-Complex variable documentation...
-
-## Dependencies
-
-Dependencies...
-
-### Dependency variables
-
-Dependency variables documentation...
-
-## Example Playbook
-
-```yaml
-- hosts: all
-  roles:
-     - { role: ansible-gogs }
-```
 
 ## Contributing
 
@@ -51,7 +55,7 @@ branch and create pull requests back to the origin ``next`` branch.
 
 ## License
 
-Apache Version 2.0
+AGPLv3
 
 ## Integration testing
 
@@ -89,7 +93,6 @@ RAKE_ANSIBLE_VAGRANT_DONT_CLEANUP=1 rake suite
 
 ## Author information
 
-<!Author Name> @<!email_prefix> <!email_suffix>
-
+* Alvaro Aleman
 
 <!-- vim: set nofen ts=4 sw=4 et: -->

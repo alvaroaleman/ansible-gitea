@@ -1,5 +1,25 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: all
+  vars:
+    gogs_database_user: gogs
+    gogs_database_password: "{{ lookup('password', playbook_dir ~ '/pw_mariadb_gogs')}}"
+    gogs_salt: "{{ lookup('password', playbook_dir ~ '/pw_gogs_salt')}}"
+    gogs_domain: 'gogs.{{ansible_default_ipv4.address}}.xip.io'
+    mariadb_root_db_pass:  "{{ lookup('password', playbook_dir ~ '/pw_mariadb_root')}}"
+    mariadb_db:
+      - name: gogs
+        encoding: utf8mb4
+        collate: utf8mb4_general_ci
+    mariadb_users:
+      - name: "{{ gogs_database_user }}"
+        pass: "{{ gogs_database_password }}"
+        priv: 'gogs.*:ALL'
   roles:
+    - silpion.mariadb
     - ansible-gogs
+  pre_tasks:
+    - name: Create bashrc alias
+      become: true
+      lineinfile:
+        dest: /root/.bashrc
+        line: "alias s=systemctl"
