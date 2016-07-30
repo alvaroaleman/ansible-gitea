@@ -43,7 +43,6 @@ Simple role to install the Gogs git server.
 * ``gogs_config_dir``: Folder in which to put gogs config (default: ``/etc/gogs``)
 * ``gogs_version``: The version of gogs to install (default: ``0.9.48``)
 
-```
 
 ## Contributing
 
@@ -94,7 +93,6 @@ RAKE_ANSIBLE_VAGRANT_DONT_CLEANUP=1 rake suite
 
 ## Author information
 
-<!Author Name> @<!email_prefix> <!email_suffix>
-
+* Alvaro Aleman
 
 <!-- vim: set nofen ts=4 sw=4 et: -->
