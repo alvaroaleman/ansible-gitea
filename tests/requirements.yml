@@ -1,3 +1,5 @@
 ---
 - src: https://github.com/silpion/ansible-lib
   name: silpion.lib
+- src: https://github.com/silpion/ansible-mariadb.git
+  name: silpion.mariadb

@@ -15,7 +15,7 @@
         pass: "{{ gogs_database_password }}"
         priv: 'gogs.*:ALL'
   roles:
-    - ansible-mariadb
+    - silpion.mariadb
     - ansible-gogs
   pre_tasks:
     - name: Create bashrc alias
