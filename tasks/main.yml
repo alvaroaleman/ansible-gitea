@@ -119,3 +119,10 @@
     state: started
     enabled: true
     name: gogs
+
+- name: Help user
+  debug:
+    msg: >
+      Find your gogs at http://{{ gogs_domain }}:3000
+      To create an initial user, you need to temporarily set
+      DISABLE_REGISTRATION=false in {{ gogs_config_dir }}/app.ini

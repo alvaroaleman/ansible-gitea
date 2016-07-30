@@ -34,4 +34,4 @@ envvars-vagrant
 \.*\.swp
 \.*\.swo
 \.environ
-test/pw*
+tests/pw*
