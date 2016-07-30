@@ -2,11 +2,11 @@ galaxy_info:
   author: Alvaro Aleman
   description: A role to install gogs
   company: Silpion IT-Solutions GmbH
-  
+
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
   # issue_tracker_url: http://example.com/issue/tracker
-  
+
   # Some suggested licenses:
   # - BSD (default)
   # - MIT
@@ -15,7 +15,7 @@ galaxy_info:
   # - Apache
   # - CC-BY
   license: license (GPLv2, CC-BY, etc)
-  
+
   min_ansible_version: 2.0
 
   # Optionally specify the branch Galaxy will use when accessing the GitHub
@@ -25,7 +25,7 @@ galaxy_info:
   # branch will be accepted. Otherwise, in all cases, the repo's default branch
   # (usually master) will be used.
   #github_branch:
-  
+
   #
   # Below are all platforms currently available. Just uncomment
   # the ones that apply to your role. If you don't see your
@@ -50,8 +50,8 @@ galaxy_info:
   #  - 11.1
   #  - 11.2
   #  - 11.3
-  #- name: Fedora
-  #  versions:
+  - name: Fedora
+    versions:
   #  - all
   #  - 16
   #  - 17
@@ -60,7 +60,8 @@ galaxy_info:
   #  - 20
   #  - 21
   #  - 22
-  #  - 23
+    - 23
+    - 24
   #- name: opensuse
   #  versions:
   #  - all
@@ -114,8 +115,8 @@ galaxy_info:
   #  - 9.1
   #  - 9.2
   #  - 9.3
-  #- name: Ubuntu
-  #  versions:
+  - name: Ubuntu
+    versions:
   #  - all
   #  - lucid
   #  - maverick
@@ -129,7 +130,7 @@ galaxy_info:
   #  - utopic
   #  - vivid
   #  - wily
-  #  - xenial
+    - xenial
   #- name: SLES
   #  versions:
   #  - all
@@ -157,8 +158,11 @@ galaxy_info:
   #  - squeeze
   #  - stretch
   #  - wheezy
-  
-  galaxy_tags: []
+
+  galaxy_tags:
+    - git
+    - development
+    - web
     # List tags for your role here, one per line. A tag is
     # a keyword that describes and categorizes the role.
     # Users find roles by searching for tags. Be sure to
