@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-```bash
+```yml
 - hosts: all
   vars:
     gogs_database_name: gogs
@@ -25,9 +25,9 @@ Simple role to install the Gogs git server.
 
 ## Role Variables
 
-* ``gogs_domain``: The baseurl to used by gogs for linkgeneration  **mandatory**
-* ``gogs_database_bassword``: Database password for gogs **mandatory**
-* ``gogs_salt``: The salt to use for password storage **mandatory**
+* ``gogs_domain``: The baseurl for linkgeneration  ``mandatory``
+* ``gogs_database_bassword``: Database password for gogs ``mandatory``
+* ``gogs_salt``: The salt to use for password storage ``mandatory``
 * ``gogs_database_uri``: Uri to use for database connection (default: ``localhost:3306``)
 * ``gogs_database_name``: Name of the database gogs shall use (default: ``gogs``)
 * ``gogs_database_user``: Name of the database usre gogs shall use (default: ``gogs``)
