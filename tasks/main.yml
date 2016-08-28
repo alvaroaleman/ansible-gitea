@@ -92,6 +92,7 @@
 
 - name: Deploy unitfiles
   tags: gogs
+  notify: service gogs restart
   become: true
   register: registered_unitfiledeployment
   template:
