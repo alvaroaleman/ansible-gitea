@@ -1,3 +1,9 @@
+# 1.0.1
+
+
+* Update gogs version to 0.9.71
+
+Alvaro Aleman (1):
 # 1.0.0
 
 
