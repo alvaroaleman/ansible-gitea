@@ -11,5 +11,6 @@ gogs_supported_distributions:
 gogs_sha256sum:
   '0.9.13': 5c9adfe3e170cd0abfd687fc4730a214cecf3c778400c231fcbaaf7efab095dc
   '0.9.48': 26e5f1660f890f580306e0e1390c4bca9d242575074e585ae76fd5312b1bba11
+  '0.9.71': 341d131853a2225b7520a76d09c3598646ccaf879534f4820c4449d43f1e686e
 
 gogs_checksum: "{{ gogs_sha256sum[gogs_version] }}"
