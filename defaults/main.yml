@@ -17,3 +17,4 @@ gogs_database_type: 'mysql'
 gogs_database_uri: 'localhost:3306'
 gogs_database_name: gogs
 gogs_database_user: gogs
+gogs_http_listen_addr: ''
