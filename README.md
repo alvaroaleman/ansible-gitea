@@ -42,6 +42,7 @@ Simple role to install the Gogs git server.
 * ``gogs_install_dir``: Folder to install gogs into (default: ``/opts/gogs``)
 * ``gogs_config_dir``: Folder in which to put gogs config (default: ``/etc/gogs``)
 * ``gogs_version``: The version of gogs to install (default: ``0.9.71``)
+* ``gogs_http_listen_addr``: The address to listen on for http request (default: '')
 
 
 ## Contributing
