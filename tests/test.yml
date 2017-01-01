@@ -1,22 +1,22 @@
 ---
 - hosts: all
   vars:
-    gogs_database_user: gogs
-    gogs_database_password: "{{ lookup('password', playbook_dir ~ '/pw_mariadb_gogs')}}"
-    gogs_salt: "{{ lookup('password', playbook_dir ~ '/pw_gogs_salt')}}"
-    gogs_domain: 'gogs.{{ansible_default_ipv4.address}}.xip.io'
+    gitea_database_user: gitea
+    gitea_database_password: "{{ lookup('password', playbook_dir ~ '/pw_mariadb_gitea')}}"
+    gitea_salt: "{{ lookup('password', playbook_dir ~ '/pw_gitea_salt')}}"
+    gitea_domain: 'gitea.{{ansible_default_ipv4.address}}.xip.io'
     mariadb_root_db_pass:  "{{ lookup('password', playbook_dir ~ '/pw_mariadb_root')}}"
     mariadb_db:
-      - name: gogs
+      - name: gitea
         encoding: utf8mb4
         collate: utf8mb4_general_ci
     mariadb_users:
-      - name: "{{ gogs_database_user }}"
-        pass: "{{ gogs_database_password }}"
-        priv: 'gogs.*:ALL'
+      - name: "{{ gitea_database_user }}"
+        pass: "{{ gitea_database_password }}"
+        priv: 'gitea.*:ALL'
   roles:
     - silpion.mariadb
-    - ansible-gogs
+    - ansible-gitea
   pre_tasks:
     - name: Create bashrc alias
       become: true
