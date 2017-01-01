@@ -1,20 +1,20 @@
 ---
-# defaults file for ansible-gogs
-gogs_username: gogs
-gogs_home: '/srv/gogs'
-gogs_install_dir: '/opt/gogs'
-gogs_config_dir: '/etc/gogs'
-gogs_version: '0.9.113'
-gogs_template_use_cow: "{{ util_template_use_cow|default(true) }}"
-gogs_appini_template: builtin_app.ini.j2
-gogs_logdir: /var/log/gogs
-gogs_runmode: prod
-gogs_http_proto: 'http'
-gogs_domain: "{{ ansible_fqdn }}"
-gogs_http_port: '3000'
-gogs_ssh_port: '2222'
-gogs_database_type: 'mysql'
-gogs_database_uri: 'localhost:3306'
-gogs_database_name: gogs
-gogs_database_user: gogs
-gogs_http_listen_addr: ''
+# defaults file for ansible-gitea
+gitea_username: gitea
+gitea_home: '/srv/gitea'
+gitea_install_dir: '/opt/gitea'
+gitea_config_dir: '/etc/gitea'
+gitea_version: '1.0.0'
+gitea_template_use_cow: "{{ util_template_use_cow|default(true) }}"
+gitea_appini_template: builtin_app.ini.j2
+gitea_logdir: /var/log/gitea
+gitea_runmode: prod
+gitea_http_proto: 'http'
+gitea_domain: "{{ ansible_fqdn }}"
+gitea_http_port: '3000'
+gitea_ssh_port: '2222'
+gitea_database_type: 'mysql'
+gitea_database_uri: 'localhost:3306'
+gitea_database_name: gitea
+gitea_database_user: gitea
+gitea_http_listen_addr: ''

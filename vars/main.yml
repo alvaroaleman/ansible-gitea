@@ -1,18 +1,16 @@
 ---
 # lookup role version
-gogs_role_version: "{{ lookup('file', role_path + '/VERSION') }}"
-gogs_filename: "gogs_{{ gogs_version }}.tar.gz"
-gogs_supported_distributions:
+gitea_role_version: "{{ lookup('file', role_path + '/VERSION') }}"
+gitea_filename: "gitea-{{ gitea_version }}-linux-amd64"
+gitea_supported_distributions:
   - CentOS-7
   - Ubuntu-16
   - Fedora-23
   - Fedora-24
 
-gogs_sha256sum:
-  '0.9.13': 5c9adfe3e170cd0abfd687fc4730a214cecf3c778400c231fcbaaf7efab095dc
-  '0.9.48': 26e5f1660f890f580306e0e1390c4bca9d242575074e585ae76fd5312b1bba11
-  '0.9.71': 341d131853a2225b7520a76d09c3598646ccaf879534f4820c4449d43f1e686e
-  '0.9.97': 41b0438f3e183f895aa459f5ea90153cbd448edc0ab241cff670e5fea193f1c1
-  '0.9.113': 71ee99a4d92ed57491c93c932a30656ff33b1ad15480feec4c8035fc931232b3
+gitea_sha256sum:
+  '1.0.0': f072d3e1d6b00f821a692d196d26a266b0d612296144807d8972b3af5a9168c7
 
-gogs_checksum: "{{ gogs_sha256sum[gogs_version] }}"
+gitea_checksum: "{{ gitea_sha256sum[gitea_version] }}"
+
+lib_persistent_data_path_remote: "{{ gitea_install_dir ~ '/' ~ gitea_version }}"

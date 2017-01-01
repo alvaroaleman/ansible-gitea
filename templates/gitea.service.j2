@@ -1,0 +1,20 @@
+[Unit]
+Description=Gitea (Git with a cup of tea)
+After=syslog.target
+After=network.target
+{% if '127.0.0.1' in gitea_database_uri or 'localhost' in gitea_database_uri %}
+After=mariadb.service
+{% endif %}
+
+[Service]
+Type=simple
+User={{ gitea_username }}
+Group={{ gitea_username }}
+WorkingDirectory={{ gitea_home }}
+ExecStart={{ gitea_install_dir ~ '/' ~ gitea_version ~ '/' ~ gitea_filename ~ ' web' }}
+Restart=always
+Environment=USER={{ gitea_username }} HOME={{ gitea_home }} GITEA_CUSTOM={{ gitea_home }}/custom
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

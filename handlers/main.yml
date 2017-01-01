@@ -1,15 +1,15 @@
 ---
-# handlers file for ansible-gogs
-- name: service gogs restart
-  tags: gogs
+# handlers file for ansible-gitea
+- name: service gitea restart
+  tags: gitea
   become: true
-  notify: Ensure gogs is running
+  notify: Ensure gitea is running
   service:
-    name: gogs
+    name: gitea
     state: restarted
 
-- name: Ensure gogs is running
-  tags: gogs
+- name: Ensure gitea is running
+  tags: gitea
   changed_when: false
   become: true
-  command: systemctl status gogs
+  command: systemctl status gitea
