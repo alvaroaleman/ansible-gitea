@@ -1,3 +1,11 @@
+# 2.0.0
+
+
+* Use current gitea app.ini
+* Install gitea instead of gogs
+* s/gogs/gitea/g
+
+Alvaro Aleman (3):
 # 1.0.5
 
 
