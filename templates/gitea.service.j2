@@ -11,7 +11,7 @@ Type=simple
 User={{ gitea_username }}
 Group={{ gitea_username }}
 WorkingDirectory={{ gitea_home }}
-ExecStart={{ gitea_install_dir ~ '/' ~ gitea_version ~ '/gogs web' }}
+ExecStart={{ gitea_install_dir ~ '/' ~ gitea_version ~ '/' ~ gitea_filename ~ ' web' }}
 RestartSec=1
 Restart=always
 Environment=USER={{ gitea_username }} HOME={{ gitea_home }} GOGS_CUSTOM={{ gitea_home }}/custom

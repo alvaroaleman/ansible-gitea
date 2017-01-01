@@ -41,7 +41,7 @@ Simple role to install the Gogs git server.
 * ``gitea_username``: Username under which to run gitea. Must be root if you want gitea to bind to ports < 1024 (default: ``gitea``)
 * ``gitea_install_dir``: Folder to install gitea into (default: ``/opts/gitea``)
 * ``gitea_config_dir``: Folder in which to put gitea config (default: ``/etc/gitea``)
-* ``gitea_version``: The version of gitea to install (default: ``0.9.113``)
+* ``gitea_version``: The version of gitea to install (default: ``1.0.0``)
 * ``gitea_http_listen_addr``: The address to listen on for http request (default: '')
 
 

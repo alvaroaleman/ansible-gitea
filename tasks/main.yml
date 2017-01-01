@@ -28,27 +28,15 @@
 - name: Include datapersitency tasks
   tags: gitea
   include: "{{ role_path }}/../silpion.lib/tasks/datapersistency.yml"
-
-- name: Download gitea
-  tags: gitea
-  include: "{{ role_path }}/../silpion.lib/tasks/get_url.yml"
   vars:
-    url: "https://cdn.gogs.io/gogs_v{{ gitea_version }}_linux_amd64.tar.gz"
-    filename: "{{ gitea_filename }}"
-    sha256sum: "{{ gitea_checksum }}"
-
-- name: Copy gitea
-  tags: gitea
-  include: "{{ role_path }}/../silpion.lib/tasks/copy.yml"
-  vars:
-    filename: "{{ gitea_filename }}"
+    util_persistent_data_path_remote_owner: "{{ gitea_username }}"
+    util_persistent_data_path_remote_group: "{{ gitea_username }}"
+    util_persistent_data_path_remote_mode: "0755"
 
 - name: Create directorys
   tags: gitea
   become: true
   with_items:
-    - "{{ gitea_install_dir }}"
-    - "{{ gitea_install_dir ~ '/' ~ gitea_version }}"
     - "{{ gitea_home ~ '/custom' }}"
     - "{{ gitea_home ~ '/custom/data' }}"
     - "{{ gitea_logdir }}"
@@ -59,6 +47,21 @@
     owner: "{{ item.owner|default(gitea_username) }}"
     group: "{{ item.group|default(gitea_username) }}"
     mode: 0755
+
+- name: Download gitea
+  tags: gitea
+  include: "{{ role_path }}/../silpion.lib/tasks/get_url.yml"
+  vars:
+    url: "https://dl.gitea.io/gitea/{{ gitea_version }}/gitea-{{ gitea_version }}-linux-amd64"
+    filename: "{{ gitea_filename }}"
+    sha256sum: "{{ gitea_checksum }}"
+
+- name: Copy gitea
+  tags: gitea
+  include: "{{ role_path }}/../silpion.lib/tasks/copy.yml"
+  vars:
+    filename: "{{ gitea_filename }}"
+    mode: "0755"
 
 - name: Link config
   tags: gitea
@@ -78,17 +81,6 @@
     owner: 0
     group: "{{ gitea_username }}"
     mode: 0640
-
-- name: Install gitea
-  tags: gitea
-  become: true
-  command: >
-    tar -xzf {{ lib_persistent_data_path_remote }}/{{ gitea_filename }}
-      --strip-components 1
-      --directory {{ gitea_install_dir ~ '/' ~ gitea_version }}
-      --no-same-owner
-  args:
-    creates: "{{ gitea_install_dir ~ '/' ~ gitea_version ~ '/gitea' }}"
 
 - name: Deploy unitfiles
   tags: gitea
