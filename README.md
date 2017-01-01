@@ -1,18 +1,18 @@
-# ansible-gogs
+# ansible-gitea
 
 ## Synopsis
 
 ```yml
 - hosts: all
   vars:
-    gogs_database_name: gogs
-    gogs_database_user: gogs
-    gogs_database_password: "{{ vault_crypted_gogs_database_pass }}"
-    gogs_salt: "{{ vault_crypted_gogs_salt }}"
-    gogs_domain: git.example.com
-    gogs_database_uri: mysql.example.com:3306
+    gitea_database_name: gitea
+    gitea_database_user: gitea
+    gitea_database_password: "{{ vault_crypted_gitea_database_pass }}"
+    gitea_salt: "{{ vault_crypted_gitea_salt }}"
+    gitea_domain: git.example.com
+    gitea_database_uri: mysql.example.com:3306
   roles:
-    - alvaroaleman.gogs
+    - alvaroaleman.gitea
 ```
 
 ## Description
@@ -25,24 +25,24 @@ Simple role to install the Gogs git server.
 
 ## Role Variables
 
-* ``gogs_domain``: The baseurl for linkgeneration  ``mandatory``
-* ``gogs_database_bassword``: Database password for gogs ``mandatory``
-* ``gogs_salt``: The salt to use for password storage ``mandatory``
-* ``gogs_database_uri``: Uri to use for database connection (default: ``localhost:3306``)
-* ``gogs_database_name``: Name of the database gogs shall use (default: ``gogs``)
-* ``gogs_database_user``: Name of the database usre gogs shall use (default: ``gogs``)
-* ``gogs_database_type``: Type of gogs database (default: ``mysql``)
-* ``gogs_http_port``: Http port gogs shall bind to (default: ``3000``)
-* ``gogs_ssh_port``: SSH port gogs shall bind to (default: ``2222``)
-* ``gogs_http_proto``: Whether to prepend ``http`` or ``https`` to generated links (default: ``http``)
-* ``gogs_logdir``: The directory to write logs into (default: ``/var/run/gogs``)
-* ``gogs_appini_template``: Template to use fot gogs ``app.ini`` config file (default: ``builtin_app.ini.j2``)
-* ``gogs_home``: Folder in which to put gogs data (default: ``/srv/gogs``)
-* ``gogs_username``: Username under which to run gogs. Must be root if you want gogs to bind to ports < 1024 (default: ``gogs``)
-* ``gogs_install_dir``: Folder to install gogs into (default: ``/opts/gogs``)
-* ``gogs_config_dir``: Folder in which to put gogs config (default: ``/etc/gogs``)
-* ``gogs_version``: The version of gogs to install (default: ``0.9.113``)
-* ``gogs_http_listen_addr``: The address to listen on for http request (default: '')
+* ``gitea_domain``: The baseurl for linkgeneration  ``mandatory``
+* ``gitea_database_bassword``: Database password for gitea ``mandatory``
+* ``gitea_salt``: The salt to use for password storage ``mandatory``
+* ``gitea_database_uri``: Uri to use for database connection (default: ``localhost:3306``)
+* ``gitea_database_name``: Name of the database gitea shall use (default: ``gitea``)
+* ``gitea_database_user``: Name of the database usre gitea shall use (default: ``gitea``)
+* ``gitea_database_type``: Type of gitea database (default: ``mysql``)
+* ``gitea_http_port``: Http port gitea shall bind to (default: ``3000``)
+* ``gitea_ssh_port``: SSH port gitea shall bind to (default: ``2222``)
+* ``gitea_http_proto``: Whether to prepend ``http`` or ``https`` to generated links (default: ``http``)
+* ``gitea_logdir``: The directory to write logs into (default: ``/var/run/gitea``)
+* ``gitea_appini_template``: Template to use fot gitea ``app.ini`` config file (default: ``builtin_app.ini.j2``)
+* ``gitea_home``: Folder in which to put gitea data (default: ``/srv/gitea``)
+* ``gitea_username``: Username under which to run gitea. Must be root if you want gitea to bind to ports < 1024 (default: ``gitea``)
+* ``gitea_install_dir``: Folder to install gitea into (default: ``/opts/gitea``)
+* ``gitea_config_dir``: Folder in which to put gitea config (default: ``/etc/gitea``)
+* ``gitea_version``: The version of gitea to install (default: ``0.9.113``)
+* ``gitea_http_listen_addr``: The address to listen on for http request (default: '')
 
 
 ## Contributing

@@ -38,9 +38,9 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
   config.vm.box = ENV['ANSIBLE_GOGS_VAGRANT_BOXNAME'] || c['vm']['box']
   config.vm.box_check_update = c['vm']['check_update']
 
-  config.vm.define :ansiblegogstest do |d|
+  config.vm.define :ansiblegiteatest do |d|
 
-    d.vm.hostname = 'ansiblegogstest'
+    d.vm.hostname = 'ansiblegiteatest'
     if not c['vm']['synced_folders']
       d.vm.synced_folder '.', '/vagrant', id: 'vagrant-root', disabled: true
       d.vm.synced_folder '.', '/home/vagrant/sync', id: 'vagrant-root', disabled: true
@@ -56,7 +56,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
       # configure ansible-playbook
       ansible.playbook = 'tests/test.yml'
       ansible.groups = {
-        'vagrant' => ['ansiblegogstest']
+        'vagrant' => ['ansiblegiteatest']
       }
       ansible.limit = 'vagrant'
 
@@ -81,7 +81,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
     d.vm.provider :virtualbox do |v|
       v.customize 'pre-boot', ['modifyvm', :id, '--nictype1', 'virtio']
-      v.customize [ 'modifyvm', :id, '--name', 'ansiblegogstest', '--memory', '1024', '--cpus', '1' ]
+      v.customize [ 'modifyvm', :id, '--name', 'ansiblegiteatest', '--memory', '1024', '--cpus', '1' ]
     end
 
     d.vm.provider :libvirt do |lv|

@@ -1,9 +1,9 @@
 ; App name that shows on every page title
 APP_NAME = Gogs: Go Git Service
 ; Change it if you run locally
-RUN_USER = {{ gogs_username  }}
+RUN_USER = {{ gitea_username  }}
 ; Either "dev", "prod" or "test", default is "dev"
-RUN_MODE = {{ gogs_runmode }}
+RUN_MODE = {{ gitea_runmode }}
 
 [repository]
 ROOT =
@@ -47,11 +47,11 @@ ENABLE_HARD_LINE_BREAK = false
 CUSTOM_URL_SCHEMES =
 
 [server]
-PROTOCOL = {{ gogs_http_proto }}
-DOMAIN = {{ gogs_domain }}
-ROOT_URL = {{ gogs_http_proto }}://{{ gogs_domain }}:{{ gogs_http_port }}/
-HTTP_ADDR = {{ gogs_http_listen_addr }}
-HTTP_PORT = {{ gogs_http_port }}
+PROTOCOL = {{ gitea_http_proto }}
+DOMAIN = {{ gitea_domain }}
+ROOT_URL = {{ gitea_http_proto }}://{{ gitea_domain }}:{{ gitea_http_port }}/
+HTTP_ADDR = {{ gitea_http_listen_addr }}
+HTTP_PORT = {{ gitea_http_port }}
 ; Local (DMZ) URL for Gogs workers (such as SSH update) accessing web service.
 ; In most cases you do not need to change the default value.
 ; Alter it only if your SSH server node is not the same as HTTP node.
@@ -63,7 +63,7 @@ START_SSH_SERVER = true
 ; Domain name to be exposed in clone URL
 SSH_DOMAIN = %(DOMAIN)s
 ; Port number to be exposed in clone URL
-SSH_PORT = {{ gogs_ssh_port }}
+SSH_PORT = {{ gitea_ssh_port }}
 ; Port number builtin SSH server listens on
 SSH_LISTEN_PORT = %(SSH_PORT)s
 ; Root path of SSH directory, default is '~/.ssh', but you have to use '/home/git/.ssh'.
@@ -79,7 +79,7 @@ MINIMUM_KEY_SIZE_CHECK = false
 OFFLINE_MODE = false
 DISABLE_ROUTER_LOG = false
 ; Generate steps:
-; $ ./gogs cert -ca=true -duration=8760h0m0s -host=myhost.example.com
+; $ ./gitea cert -ca=true -duration=8760h0m0s -host=myhost.example.com
 ;
 ; Or from a .pfx file exported from the Windows certificate store (do
 ; not forget to export the private key):
@@ -106,26 +106,26 @@ DSA     = 1024
 
 [database]
 ; Either "mysql", "postgres" or "sqlite3", it's your choice
-DB_TYPE = {{ gogs_database_type }}
-HOST = {{ gogs_database_uri }}
-NAME = {{ gogs_database_name }}
-USER = {{ gogs_database_user }}
-PASSWD = {{ gogs_database_password}}
+DB_TYPE = {{ gitea_database_type }}
+HOST = {{ gitea_database_uri }}
+NAME = {{ gitea_database_name }}
+USER = {{ gitea_database_user }}
+PASSWD = {{ gitea_database_password}}
 ; For "postgres" only, either "disable", "require" or "verify-full"
 SSL_MODE = disable
 ; For "sqlite3" and "tidb", use absolute path when you start as service
-PATH = data/gogs.db
+PATH = data/gitea.db
 
 [admin]
 
 [security]
 INSTALL_LOCK = true
 ; !!CHANGE THIS TO KEEP YOUR USER DATA SAFE!!
-SECRET_KEY = {{ gogs_salt }}
+SECRET_KEY = {{ gitea_salt }}
 ; Auto-login remember days
 LOGIN_REMEMBER_DAYS = 7
-COOKIE_USERNAME = gogs_awesome
-COOKIE_REMEMBER_NAME = gogs_incredible
+COOKIE_USERNAME = gitea_awesome
+COOKIE_REMEMBER_NAME = gitea_incredible
 ; Reverse proxy authentication header name of user name
 REVERSE_PROXY_AUTHENTICATION_USER = X-WEBAUTH-USER
 
@@ -239,7 +239,7 @@ MAX_FILES = 5
 FORMAT =
 
 [log]
-ROOT_PATH = {{ gogs_logdir }}
+ROOT_PATH = {{ gitea_logdir }}
 ; Either "console", "file", "conn", "smtp" or "database", default is "console"
 ; Use comma to separate multiple modes, e.g. "console, file"
 MODE = file
@@ -296,7 +296,7 @@ RECEIVERS =
 LEVEL =
 ; Either "mysql" or "postgres"
 DRIVER =
-; Based on xorm, e.g.: root:root@localhost/gogs?charset=utf8
+; Based on xorm, e.g.: root:root@localhost/gitea?charset=utf8
 CONN =
 
 [cron]
@@ -350,5 +350,5 @@ de-DE = de
 
 [other]
 SHOW_FOOTER_BRANDING = false
-; Show version information about gogs and go in the footer
+; Show version information about gitea and go in the footer
 SHOW_FOOTER_VERSION = true
