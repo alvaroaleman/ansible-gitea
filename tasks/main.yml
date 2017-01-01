@@ -39,6 +39,7 @@
   with_items:
     - "{{ gitea_home ~ '/custom' }}"
     - "{{ gitea_home ~ '/custom/data' }}"
+    - "{{ gitea_home ~ '/.ssh' }}"
     - "{{ gitea_logdir }}"
     - "{{ gitea_config_dir }}"
   file:
