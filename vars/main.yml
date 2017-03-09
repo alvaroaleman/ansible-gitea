@@ -4,12 +4,14 @@ gitea_role_version: "{{ lookup('file', role_path + '/VERSION') }}"
 gitea_filename: "gitea-{{ gitea_version }}-linux-amd64"
 gitea_supported_distributions:
   - CentOS-7
+  - Ubuntu-14
   - Ubuntu-16
   - Fedora-23
   - Fedora-24
 
 gitea_sha256sum:
   '1.0.0': f072d3e1d6b00f821a692d196d26a266b0d612296144807d8972b3af5a9168c7
+  '1.0.2': 02ed9a3bb7bcd1c8f3d8888e51a0887b3c0f44b2a80d50c99f9e407e457545ab
 
 gitea_checksum: "{{ gitea_sha256sum[gitea_version] }}"
 
