@@ -36,7 +36,7 @@ Simple role to install the Gogs git server.
 * ``gitea_ssh_port``: SSH port gitea shall bind to (default: ``2222``)
 * ``gitea_http_proto``: Whether to prepend ``http`` or ``https`` to generated links (default: ``http``)
 * ``gitea_logdir``: The directory to write logs into (default: ``/var/run/gitea``)
-* ``gitea_appini_template``: Template to use fot gitea ``app.ini`` config file (default: ``builtin_app.ini.j2``)
+* ``gitea_appini_template``: Template to use for gitea ``app.ini`` config file (default: ``builtin_app.ini.j2``)
 * ``gitea_home``: Folder in which to put gitea data (default: ``/srv/gitea``)
 * ``gitea_username``: Username under which to run gitea. Must be root if you want gitea to bind to ports < 1024 (default: ``gitea``)
 * ``gitea_install_dir``: Folder to install gitea into (default: ``/opts/gitea``)
