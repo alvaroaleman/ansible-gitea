@@ -12,6 +12,7 @@ gitea_supported_distributions:
 gitea_sha256sum:
   '1.0.0': f072d3e1d6b00f821a692d196d26a266b0d612296144807d8972b3af5a9168c7
   '1.0.2': 02ed9a3bb7bcd1c8f3d8888e51a0887b3c0f44b2a80d50c99f9e407e457545ab
+  '1.1.0': 59cd3fb52292712bd374a215613d6588122d93ab19d812b8393786172b51d556
 
 gitea_checksum: "{{ gitea_sha256sum[gitea_version] }}"
 
