@@ -43,7 +43,9 @@ Simple role to install the Gogs git server.
 * ``gitea_config_dir``: Folder in which to put gitea config (default: ``/etc/gitea``)
 * ``gitea_version``: The version of gitea to install (default: ``1.0.0``)
 * ``gitea_http_listen_addr``: The address to listen on for http request (default: '')
-
+* ``gitea_max_file_upload_size``: Max size of each file in MB. (default: '3')
+* ``gitea_explore_paging_num``: Number of repositories that are showed in one explore page (default: '20')
+* ``gitea_issue_paging_num``: Number of issues that are showed in one page (default: '10')
 
 ## Contributing
 

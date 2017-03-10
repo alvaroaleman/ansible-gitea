@@ -117,6 +117,6 @@
 - name: Help user
   debug:
     msg: >
-      Find your gitea at http://{{ gitea_domain }}:3000
+      Find your gitea at http://{{ gitea_domain }}:{{ gitea_http_port }}
       To create an initial user, you need to temporarily set
       DISABLE_REGISTRATION=false in {{ gitea_config_dir }}/app.ini
