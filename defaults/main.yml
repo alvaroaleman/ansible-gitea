@@ -18,3 +18,6 @@ gitea_database_uri: 'localhost:3306'
 gitea_database_name: gitea
 gitea_database_user: gitea
 gitea_http_listen_addr: ''
+gitea_max_file_upload_size: 3
+gitea_explore_paging_num: 20
+gitea_issue_paging_num: 10

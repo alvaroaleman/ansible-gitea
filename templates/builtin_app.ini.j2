@@ -40,15 +40,15 @@ TEMP_PATH = data/tmp/uploads
 ; One or more allowed types, e.g. image/jpeg|image/png. Nothing means any file type
 ALLOWED_TYPES =
 ; Max size of each file in MB. Defaults to 3MB
-FILE_MAX_SIZE = 3
+FILE_MAX_SIZE = {{ gitea_max_file_upload_size }}
 ; Max number of files per upload. Defaults to 5
 MAX_FILES = 5
 
 [ui]
 ; Number of repositories that are showed in one explore page
-EXPLORE_PAGING_NUM = 20
+EXPLORE_PAGING_NUM = {{ gitea_explore_paging_num }}
 ; Number of issues that are showed in one page
-ISSUE_PAGING_NUM = 10
+ISSUE_PAGING_NUM = {{ gitea_issue_paging_num }}
 ; Number of maximum commits showed in one activity feed
 FEED_MAX_COMMIT_NUM = 5
 ; Value of `theme-color` meta tag, used by Android >= 5.0
